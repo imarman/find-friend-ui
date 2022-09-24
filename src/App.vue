@@ -5,7 +5,7 @@
 
 
 <script setup lang="ts">
-import BasicLayout from './Layout/BasicLayout.vue'
+import BasicLayout from '@/Layout/BasicLayout.vue'
 </script>
 
 <style scoped>
