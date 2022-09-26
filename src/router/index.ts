@@ -5,6 +5,7 @@ import Teams from "@/pages/Teams.vue";
 import User from "@/pages/User.vue";
 import Search from "@/pages/Search.vue";
 import UserEditPage from "@/pages/UserEditPage.vue";
+import SearchResultPage from "@/pages/SearchResultPage.vue";
 
 const routes = [
   { path: "/", component: Home },
@@ -13,6 +14,7 @@ const routes = [
   { path: "/user", component: User },
   { path: "/search", component: Search },
   { path: "/user/edit", component: UserEditPage },
+  { path: "/search-result", component: SearchResultPage },
 ];
 
 const router: VueRouter.Router = VueRouter.createRouter({

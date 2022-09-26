@@ -17,6 +17,7 @@ import {
   CellGroup,
   Form,
   Field,
+  Card
 } from "vant";
 
 const vantConf = (app: App) => {
@@ -36,6 +37,7 @@ const vantConf = (app: App) => {
   app.use(CellGroup);
   app.use(Form);
   app.use(Field);
+  app.use(Card);
 };
 
 export default vantConf;

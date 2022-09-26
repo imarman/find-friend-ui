@@ -20,18 +20,24 @@
   <van-tree-select v-model:active-id="activeIds" v-model:main-active-index="activeIndex" :items="tagList"
     @click-item="chooseItem" />
 
+  <div style="padding:12px">
+    <van-button type="primary" @click="doSearchResult" block>搜索</van-button>
+  </div>
+
 </template>
 
 <script setup lang="ts">
-import { Toast, TreeSelectChild } from 'vant';
+import { TreeSelectChild } from 'vant';
 import { Ref } from 'vue';
+import { useRouter } from 'vue-router';
 import { TreeTag } from '../models/tag';
+
 
 const initData = [
   {
     text: '性别',
     children: [
-      { text: '男', id: '男' },
+      { text: 'java', id: 'java' },
       { text: '女', id: '女' },
       { text: '女', id: '女22222222' },
       { text: '女', id: '女3333333' },
@@ -44,6 +50,7 @@ const initData = [
     children: [
       { text: '南京', id: '南京' },
       { text: '无锡', id: '无锡' },
+      { text: 'springboot', id: 'springboot' },
     ],
   },
 ]
@@ -54,7 +61,7 @@ const searchText = ref('');
 const onSearch = (val: string) => {
   tagList.value = initData.map(parentTag => {
     const tempChildren = [...parentTag.children]
-    const temParentTag = {...parentTag}
+    const temParentTag = { ...parentTag }
     temParentTag.children = tempChildren.filter(tag => tag.id.includes(val))
     return temParentTag
   })
@@ -79,5 +86,16 @@ const chooseItem = (item: TreeSelectChild) => {
   console.log(item);
 }
 
+const router = useRouter();
+
+// 所有选择完标签的结果
+const doSearchResult = () => {
+  router.push({
+    path: "/search-result",
+    query: {
+      tags: activeIds.value
+    }
+  })
+}
 
 </script>
